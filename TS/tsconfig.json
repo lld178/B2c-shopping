@@ -1,0 +1,16 @@
+{
+  "include": [
+    "./*"
+  ],
+  "exclude": [
+
+  ],
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ES2015",
+    "outDir": "../JS",
+    // "outFile": "../JS/app.js" 合并
+    // "allowJs": false
+  },
+
+}
