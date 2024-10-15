@@ -1,10 +1,14 @@
 const path = require('path')
 const htmlPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: "./TS/index.ts",
+  mode: 'development',
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bunde.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.json'],
   },
   module: {
     rules: [
@@ -18,8 +22,8 @@ module.exports = {
                 [
                   "@babel/preset-env",
                   {
-                    target: {
-                      "chrome": 88,
+                    targets: {
+                      browsers: ["> 1%", "last 2 versions", "not dead"]
                     },
                     "corejs": "3",
                     "useBuiltIns": "usage"
@@ -31,12 +35,36 @@ module.exports = {
           'ts-loader'
         ],
         exclude: /node-modules/
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-preset-env",
+                    {
+                      browsers: 'last 2 versions'
+                    }
+                  ]
+
+                ]
+              }
+            }
+          },
+          "less-loader"
+        ]
       }
     ]
   },
   plugins: [
     new htmlPlugin({
-      template: "./TS/index.html"
+      template: "./src/index.html"
     }),
 
   ]

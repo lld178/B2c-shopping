@@ -1,0 +1,53 @@
+@bg-color: pink;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: bold 20px "Courier";
+}
+
+.main {
+  width: 360px;
+  height: 420px;
+  background-color: @bg-color;
+  margin: 100px auto;
+  border: 10px solid gray;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  .stage {
+    width: 304px;
+    height: 304px;
+    border: 2px solid gray;
+    position: relative;
+
+    .snake>div {
+      width: 10px;
+      height: 10px;
+      background-color: gray;
+      border: 1px solid pink;
+      position: absolute;
+    }
+
+    .food {
+      width: 10px;
+      height: 10px;
+      background-color: gray;
+      border: 1px solid pink;
+      position: absolute;
+      left: 40px;
+    }
+  }
+
+  .panel {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
